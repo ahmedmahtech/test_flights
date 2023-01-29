@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleConfirm">
+		<sortItems>
+			<ViewSettingsItem text="Airline Code" key="carrid" selected="true"/>
+		</sortItems>
+		<groupItems>
+			<ViewSettingsItem text="Airline Code" key="carrid" selected="true"/>
+		</groupItems>
+		<filterItems>
+			<ViewSettingsFilterItem text="Airline Code" key="carrid">
+				<items>
+					<ViewSettingsItem text="AA" key="AA" />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

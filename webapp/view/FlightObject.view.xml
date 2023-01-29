@@ -1,0 +1,37 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ahmed_practise.test_flights.controller.FlightObject"
+	xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:forms="sap.ui.layout.form">
+	<semantic:SemanticPage id="page" headerPinnable="true" toggleHeaderOnTitleClick="false" busy="{FlightObjectView>/busy}"
+		busyIndicatorDelay="{FlightObjectView>/delay}">
+		<semantic:titleHeading>
+			<Title text="{CARRNAME} ({carrid})" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<Text text="Airline Currency : {CURRCODE} "/>
+			<ToolbarSpacer/>
+			<Text text="Site : {URL}"/>
+		</semantic:headerContent>
+		<forms:SimpleForm editable="false" layout="ColumnLayout"></forms:SimpleForm>
+		<semantic:content>
+			<Table id="table" width="auto" items="{ path:'carrierFlights', sorter: { path: 'carrid'} }">
+				<columns>
+					<Column id="connid">
+						<Text text="{i18n>tableConnectionColumnTitle}" id="flightColumnTitle"/>
+					</Column>
+					<Column id="fldate">
+						<Text text="{i18n>tableFlightDateColumnTitle}" id="dateColumnTitle"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<ObjectIdentifier title="{connid}"/>
+						</cells>
+						<cells>
+							<ObjectIdentifier title="{fldate}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

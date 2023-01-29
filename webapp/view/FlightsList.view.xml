@@ -1,0 +1,45 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="ahmed_practise.test_flights.controller.FlightsList"
+	xmlns:semantic="sap.f.semantic" xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading >
+			<Title text="{i18n>worklistViewTitle}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<Table id="table" width="auto" items="{ path: '/CarrierCollection', sorter: { path: 'carrid', descending: false } }"
+				noDataText="{FlightslistView>/tableNoDataText}" busyIndicatorDelay="{FlightslistView>/tableBusyDelay}" growing="true"
+				growingScrollToLoad="true" updateFinished=".onUpdateFinished">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="tableHeader" text="{FlightslistView>/worklistTableTitle}" level="H3"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://filter" press=".handleOpenDialog"/>
+						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">
+							<layoutData>
+								<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="carrid">
+						<Text text="{i18n>tableCodeColumnTitle}" id="codeColumnTitle"/>
+					</Column>
+						<Column id="carrname">
+						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press=".onPress">
+						<cells>
+							<ObjectIdentifier title="{carrid}"/>
+						</cells>
+								<cells>
+							<ObjectIdentifier title="{CARRNAME}"/>
+						</cells>
+					</ColumnListItem>
+					
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

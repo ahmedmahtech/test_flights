@@ -1,0 +1,137 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "ahmed_practise.test_flights",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"RMTSAMPLEFLIGHT": {
+				"uri": "/sap/opu/odata/iwfnd/RMTSAMPLEFLIGHT/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "ahmed_practise.test_flights.view.home",
+			"type": "XML",
+			"async": true,
+			"id": "home"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {
+					"minVersion": ""
+				},
+				"sap.ushell": {
+					"minVersion": ""
+				},
+				"sap.collaboration": {
+					"minVersion": ""
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "ahmed_practise.test_flights.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "RMTSAMPLEFLIGHT",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": []
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "ahmed_practise.test_flights.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "Flights",
+					"pattern": "",
+					"greedy": false,
+					"target": [
+						"Flights"
+					]
+				},
+				{
+					"name": "FlightObject",
+					"pattern": "FlightCode/{objectId}",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"FlightObject"
+					]
+				}
+			],
+			"targets": {
+				"Flights": {
+					"viewName": "FlightsList",
+					"viewType": "XML",
+					"viewLevel": 1
+				},
+				"FlightObject": {
+					"viewType": "XML",
+					"viewName": "FlightObject",
+					"viewLevel": 2,
+					"title": "",
+					"viewId": "FlightObject"
+				}
+			}
+		}
+	}
+}
